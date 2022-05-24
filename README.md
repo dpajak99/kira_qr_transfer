@@ -43,7 +43,7 @@ Uint8List data = await qrGifGenerator.generateGif(frames);
 Image.memory(data)
 BrowserUtils.downloadFile(data, 'generated_qr_code.gif');
 ```
-
+---------------------------------------------
 Creating git from text
 ```dart
 /// Create [QrTextTransferObject]
