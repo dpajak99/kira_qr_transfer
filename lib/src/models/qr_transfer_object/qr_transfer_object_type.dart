@@ -1,0 +1,4 @@
+enum QrTransferObjectType {
+  file,
+  text,
+}
