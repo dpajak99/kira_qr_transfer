@@ -28,6 +28,10 @@ QrTransferObject qrTransferObject = QrFileTransferObject(
 /// Create [QrFrameGenerator] instance
 QrFrameGenerator qrFrameGenerator = QrFrameGenerator(
     data: qrTransferObject,
+    /// You can encrypt your data
+    password: null,
+    /// Max size for single frame data
+    splitSize: 200,
 );
 ```
 ```dart
@@ -39,7 +43,12 @@ List<QrFrameWrapper> frames = qrFrameGenerator.generateOnly([1,3,5,7]);
 ```
 ```dart
 /// Provide generated frames into [QrGifGenerator]
-QrGifGenerator qrGifGenerator = QrGifGenerator();
+QrGifGenerator qrGifGenerator = QrGifGenerator(
+    /// You can change default image builder for gif Frame
+    gifLayoutBuilder: BasicGifLayoutBuilder(),
+    /// You can change duration of single frame
+    frameDuration: Duration(miliseconds: 500),
+);
 
 /// Get created gif as bytes
 Uint8List data = await qrGifGenerator.generateGif(frames);
@@ -57,13 +66,22 @@ QrTransferObject qrTransferObject = QrTextTransferObject(text: "some text");
 /// Create [QrFrameGenerator] instance
 QrFrameGenerator qrFrameGenerator = QrFrameGenerator(
     data: qrTransferObject,
+    /// You can encrypt your data
+    password: null,
+    /// Max size for single frame data
+    splitSize: 200,
 );
 
 /// Generate frames
 List<QrFrameWrapper> frames = qrFrameGenerator.generateAll();
 
 /// Provide generated frames into [QrGifGenerator]
-QrGifGenerator qrGifGenerator = QrGifGenerator();
+QrGifGenerator qrGifGenerator = QrGifGenerator(
+    /// You can change default image builder for gif Frame
+    gifLayoutBuilder: BasicGifLayoutBuilder(),
+    /// You can change duration of single frame
+    frameDuration: Duration(miliseconds: 500),
+);
 
 /// Get created gif as bytes
 Uint8List data = await qrGifGenerator.generateGif(frames);
