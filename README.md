@@ -29,10 +29,15 @@ QrTransferObject qrTransferObject = QrFileTransferObject(
 QrFrameGenerator qrFrameGenerator = QrFrameGenerator(
     data: qrTransferObject,
 );
-
-/// Generate frames
+```
+```dart
+/// You can generate all frames
 List<QrFrameWrapper> frames = qrFrameGenerator.generateAll();
 
+/// or specified frames
+List<QrFrameWrapper> frames = qrFrameGenerator.generateOnly([1,3,5,7]);
+```
+```dart
 /// Provide generated frames into [QrGifGenerator]
 QrGifGenerator qrGifGenerator = QrGifGenerator();
 
